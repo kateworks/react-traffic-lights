@@ -1,0 +1,27 @@
+.link {
+  text-decoration: none;
+  font: inherit;
+  color: var(--color-link);
+  transition: opacity 0.5s linear;
+}
+
+.link:hover {
+  opacity: 0.7;
+}
+
+.link:focus-visible {
+  outline: var(--outline-focus);
+  outline-offset: var(--outline-offset);
+}
+
+.link_active {
+  text-decoration: 3px underline wavy var(--color-link-active);
+  color: var(--color-link-active);
+}
+
+@supports not selector(:focus-visible) {
+  .link:focus {
+    outline: var(--outline-focus);
+    outline-offset: var(--outline-offset);
+  }
+}

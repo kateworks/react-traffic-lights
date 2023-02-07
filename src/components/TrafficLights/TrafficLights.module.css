@@ -1,0 +1,5 @@
+.lights {
+  border: 3px solid var(--color-frame);
+}
+
+/* @media (min-width: 544px), (orientation: landscape) { ... } */
