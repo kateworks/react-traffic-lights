@@ -8,9 +8,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: '/red', element: <RedColorPage /> },
-      { path: '/yellow', element: <YellowColorPage /> },
-      { path: '/green', element: <GreenColorPage /> },
+      { path: 'red', element: <RedColorPage /> },
+      { path: 'yellow', element: <YellowColorPage /> },
+      { path: 'green', element: <GreenColorPage /> },
     ]
   }
 ])
