@@ -1,8 +1,10 @@
-import { NLink } from '..';
+import { useState } from 'react';
+import { NLink, ToggleSwitch } from '..';
 import { navLinks } from '../../utils/const';
 import styles from './Header.module.css';
 
 function Header() {
+  const [isChecked, setIsChecked] = useState(true);
 
   const navList = navLinks.map(({id, title, link, end}) => (
     <li key={id} className={styles.header__item}>
@@ -17,10 +19,15 @@ function Header() {
       <h1 className={styles.header__title}>
         Traffic lights
       </h1>
-      <nav>
+      <nav className={styles.header__nav}>
         <ul className={styles.header__list}>
           {navList}
         </ul>
+        <ToggleSwitch 
+          name="toggle-button" 
+          isChecked={isChecked}
+          onChange={() => setIsChecked(x => !x)}
+        />
       </nav>
     </header>
   );
