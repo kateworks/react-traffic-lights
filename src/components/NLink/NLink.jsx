@@ -1,9 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import styles from './NLink.module.css';
 
-function NLink({ to, end, children }) {
-  const activeClass = `${styles.link} ${styles.link_active}`;
-  const getClass = (active) => (active ? activeClass : styles.link);
+function NLink({ to, end, enabled, children }) {
+  const disabledClass = enabled ? '' : styles.link_disabled;
+  const activeClass = `${styles.link} ${styles.link_active} ${disabledClass}`;
+
+  const getClass = (active) => (active ? activeClass : `${styles.link} ${disabledClass}`);
 
   return (
     <NavLink 

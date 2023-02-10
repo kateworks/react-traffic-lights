@@ -7,46 +7,21 @@ const { red, yellow, green } = LIGHTS;
 const defaultState = {
   isOn: false,
   color: '',
-  duration: 0,
-  wink: 0,
 };
 
 function trafficLightsReducer(state, action) {
   switch (action.type) {
     case 'toggle':
-      return { 
-        ...state, 
-        isOn: !state.isOn,
-      };
+      return { ...state, isOn: !state.isOn };
     case 'clear':
-      if (!state.isOn) return { 
-        ...state, 
-        color: '', 
-        duration: 0,
-        wink: 0,
-      };
+      if (!state.isOn) return { ...state, color: '' };
       throw new Error(`Cannot perform that action: ${action}`);
     case red:
-      return { 
-        ...state, 
-        color: red, 
-        duration: 10,
-        wink: 3,
-      };
+      return { ...state, color: red };
     case yellow:
-      return { 
-        ...state, 
-        color: yellow, 
-        duration: 5,
-        wink: 0,
-      };
+      return { ...state, color: yellow };
     case green:
-      return { 
-        ...state, 
-        color: green, 
-        duration: 10,
-        wink: 3,
-      };
+      return { ...state, color: green };
     default:
       throw new Error(`Unknown action: ${action}`);
   }
@@ -64,8 +39,6 @@ function TrafficLightsProvider({ children }) {
   const trafficLightsContext = {
     isOn: state.isOn,
     color: '',
-    duration: 0,
-    wink: 0,
     toggle : toggleTrafficLights,
     clear: clearTrafficLights,
     red: turnRed,

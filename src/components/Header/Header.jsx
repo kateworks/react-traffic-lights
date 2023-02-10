@@ -13,7 +13,7 @@ function Header() {
 
   const navList = navLinks.map(({id, title, link, end}) => (
     <li key={id} className={styles.header__item}>
-      <NLink to={link} end={end || false}>
+      <NLink to={link} end={end || false} enabled={!ctx.isOn}>
         {title}        
       </NLink>
     </li>

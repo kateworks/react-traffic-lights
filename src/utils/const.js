@@ -10,3 +10,9 @@ export const LIGHTS = {
   yellow: 'yellow',
   green: 'green',
 };
+
+export const DURATIONS = {
+  red: [ 10, 3 ],
+  yellow: [ 5, 0 ],
+  green: [ 10, 3 ],
+};

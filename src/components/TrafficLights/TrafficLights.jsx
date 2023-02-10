@@ -14,8 +14,7 @@ function TrafficColor({ color = '', isActive = false }) {
     return <div className={styles.lights__color} />
   }
 
-  const colorClass = colorClasses[color]  || '';
-    
+  const colorClass = colorClasses[color] || '';
   return (
     <div className={`${styles.lights__color} ${colorClass}`}></div>
   );
