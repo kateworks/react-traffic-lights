@@ -2,7 +2,7 @@ import React from 'react';
 
 const TrafficLightsContext = React.createContext({
   isOn: false,
-  colour: '',
+  color: '',
   duration: 0,
   wink: 0,
   toggle: () => {},

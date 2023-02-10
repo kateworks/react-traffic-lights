@@ -1,9 +1,12 @@
-import { useReducer } from "react";
-import TrafficLightsContext from "./TrafficLightsContext";
+import { useReducer } from 'react';
+import TrafficLightsContext from './TrafficLightsContext';
+import { LIGHTS } from '../utils/const';
+
+const { red, yellow, green } = LIGHTS;
 
 const defaultState = {
   isOn: false,
-  colour: '',
+  color: '',
   duration: 0,
   wink: 0,
 };
@@ -18,29 +21,29 @@ function trafficLightsReducer(state, action) {
     case 'clear':
       if (!state.isOn) return { 
         ...state, 
-        colour: '', 
+        color: '', 
         duration: 0,
         wink: 0,
       };
       throw new Error(`Cannot perform that action: ${action}`);
-    case 'red':
+    case red:
       return { 
         ...state, 
-        colour: 'red', 
+        color: red, 
         duration: 10,
         wink: 3,
       };
-    case 'yellow':
+    case yellow:
       return { 
         ...state, 
-        colour: 'yellow', 
+        color: yellow, 
         duration: 5,
         wink: 0,
       };
-    case 'green':
+    case green:
       return { 
         ...state, 
-        colour: 'green', 
+        color: green, 
         duration: 10,
         wink: 3,
       };
@@ -54,13 +57,13 @@ function TrafficLightsProvider({ children }) {
 
   const toggleTrafficLights = () => dispatch({ type: 'toggle'});
   const clearTrafficLights = () => dispatch({ type: 'clear'});
-  const turnRed = () => dispatch({ type: 'red'});
-  const turnYellow = () => dispatch({ type: 'yellow'});
-  const turnGreen = () => dispatch({ type: 'green'});
+  const turnRed = () => dispatch({ type: red });
+  const turnYellow = () => dispatch({ type: yellow });
+  const turnGreen = () => dispatch({ type: green });
 
   const trafficLightsContext = {
     isOn: state.isOn,
-    colour: '',
+    color: '',
     duration: 0,
     wink: 0,
     toggle : toggleTrafficLights,

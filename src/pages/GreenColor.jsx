@@ -1,8 +1,9 @@
+import { TrafficLights } from "../components";
+import { LIGHTS } from "../utils/const";
+
 function GreenColorPage() {
   return (
-    <main>
-      <h1>GREEN</h1>
-    </main>
+    <TrafficLights activeColor={LIGHTS.green} />
   );
 }
 

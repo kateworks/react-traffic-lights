@@ -6,11 +6,13 @@ import styles from './Root.module.css';
 function RootLayout() {
   return (
     <TrafficLightsProvider>
-      <Header />
-      <main className={styles.content}>
-        <Outlet />
-      </main>
-      <Footer />
+      <div className={styles.app}>
+        <Header />
+        <main className={styles.app__content}>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </TrafficLightsProvider>
   );
 }

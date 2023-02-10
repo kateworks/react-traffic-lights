@@ -1,21 +1,57 @@
 .lights {
   display: flex;
   flex-flow: row nowrap;
-  gap: 10px;
-  padding: 10px;
-  margin: 10px;
+  gap: 20px;
+  padding: 20px;
   border: 3px solid var(--color-frame);
   border-radius: 20px;
 }
 
 .lights__color {
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   background-color: var(--color-frame);
   border-radius: 50%;
+  opacity: 0.3;
 }
 
-@media screen and (max-width: 390px) and (orientation: portrait) {
+.lights__color_red {
+  background-color: var(--color-red);
+  opacity: 1;
+}
+
+.lights__color_yellow {
+  background-color: var(--color-yellow);
+  opacity: 1;
+}
+
+.lights__color_green {
+  background-color: var(--color-green);
+  opacity: 1;
+}
+
+@media screen and (max-width: 700px) {
+  .lights {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .lights__color {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media 
+screen and (max-height: 400px) and (orientation: landscape),
+screen and (max-width: 400px) and (orientation: portrait) {
+  .lights__color {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media screen and (max-width: 400px) and (orientation: portrait) {
   .lights {
     flex-flow: column nowrap;
   }
