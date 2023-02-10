@@ -2,9 +2,7 @@ import { TrafficLights } from '../components';
 
 function HomePage() {
   return (
-    <main>
-      <TrafficLights />
-    </main>
+    <TrafficLights />
   );
 }
 
