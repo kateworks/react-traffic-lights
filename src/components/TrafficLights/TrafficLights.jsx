@@ -23,6 +23,10 @@ function TrafficColor({ color = '', isActive = false }) {
       }, 1000);  
     }
 
+    if (count === 0) {
+      
+    }
+
     return () => {
       if (timerId) clearTimeout(timerId);
     }

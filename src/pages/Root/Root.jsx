@@ -1,19 +1,33 @@
-import { Outlet } from 'react-router-dom';
-import { TrafficLightsProvider } from '../../store/TrafficLightsContext';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { useTrafficLights } from '../../store/TrafficLightsContext';
 import { Header, Footer } from '../../components';
 import styles from './Root.module.css';
+import { useEffect } from 'react';
 
 function RootLayout() {
+  const lights = useTrafficLights();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (lights.isOn) {
+      navigate('red');
+    } else {
+      navigate('/');
+    }
+  }, [lights.isOn, navigate]);
+
+  const handleToggle = () => {
+    lights.toggle();
+  };
+
   return (
-    <TrafficLightsProvider>
-      <div className={styles.app}>
-        <Header />
-        <main className={styles.app__content}>
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
-    </TrafficLightsProvider>
+    <div className={styles.app}>
+      <Header onToggle={handleToggle} />
+      <main className={styles.app__content}>
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   );
 }
 

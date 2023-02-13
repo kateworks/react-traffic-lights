@@ -3,12 +3,8 @@ import { NLink, ToggleSwitch } from '..';
 import { navLinks } from '../../utils/const';
 import styles from './Header.module.css';
 
-function Header() {
+function Header({ onToggle }) {
   const lights = useTrafficLights();
-
-  const handleChange = () => {
-    lights.toggle();
-  };
 
   const navList = navLinks.map(({id, title, link, end}) => (
     <li key={id} className={styles.header__item}>
@@ -30,7 +26,7 @@ function Header() {
         <ToggleSwitch 
           name="toggle-button" 
           isChecked={lights.isOn}
-          onChange={handleChange}
+          onChange={onToggle}
         />
       </nav>
     </header>

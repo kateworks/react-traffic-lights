@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RootLayout, HomePage, RedColorPage, YellowColorPage, GreenColorPage, ErrorPage } from '../pages';
+import { TrafficLightsProvider } from '../store/TrafficLightsContext';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,11 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <TrafficLightsProvider>
+      <RouterProvider router={router} />
+    </TrafficLightsProvider>
+  );
 }
 
 export default App;
