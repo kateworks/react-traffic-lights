@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import TrafficLightsProvider from '../../store/TrafficLightsProvider';
+import { TrafficLightsProvider } from '../../store/TrafficLightsContext';
 import { Header, Footer } from '../../components';
 import styles from './Root.module.css';
 

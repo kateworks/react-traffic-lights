@@ -1,19 +1,18 @@
-import { useContext } from 'react';
-import TrafficLightsContext from '../../store/TrafficLightsContext';
+import { useTrafficLights } from '../../store/TrafficLightsContext';
 import { NLink, ToggleSwitch } from '..';
 import { navLinks } from '../../utils/const';
 import styles from './Header.module.css';
 
 function Header() {
-  const ctx = useContext(TrafficLightsContext);
+  const lights = useTrafficLights();
 
   const handleChange = () => {
-    ctx.toggle();
+    lights.toggle();
   };
 
   const navList = navLinks.map(({id, title, link, end}) => (
     <li key={id} className={styles.header__item}>
-      <NLink to={link} end={end || false} enabled={!ctx.isOn}>
+      <NLink to={link} end={end || false} enabled={!lights.isOn}>
         {title}        
       </NLink>
     </li>
@@ -30,7 +29,7 @@ function Header() {
         </ul>
         <ToggleSwitch 
           name="toggle-button" 
-          isChecked={ctx.isOn}
+          isChecked={lights.isOn}
           onChange={handleChange}
         />
       </nav>

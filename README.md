@@ -33,3 +33,4 @@
 4) translate
 5) доступность
 6) error page
+7) TrafficLights - убрать лишний код
