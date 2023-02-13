@@ -8,11 +8,15 @@
 }
 
 .lights__color {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 140px;
   height: 140px;
   background-color: var(--color-frame);
   border-radius: 50%;
   opacity: 0.3;
+  font-size: 0;
 }
 
 .lights__color_red {
@@ -28,6 +32,12 @@
 .lights__color_green {
   background-color: var(--color-green);
   opacity: 1;
+}
+
+.lights__time {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--color-white);
 }
 
 @media screen and (max-width: 700px) {
@@ -48,6 +58,10 @@ screen and (max-width: 400px) and (orientation: portrait) {
   .lights__color {
     width: 90px;
     height: 90px;
+  }
+
+  .lights__time {
+    font-size: 2rem;
   }
 }
 
