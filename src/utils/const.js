@@ -11,8 +11,20 @@ export const LIGHTS = {
   green: 'green',
 };
 
-export const DURATIONS = {
-  red: [ 10, 3 ],
-  yellow: [ 5, 0 ],
-  green: [ 10, 3 ],
+export const SCHEDULE = {
+  red: {
+    duration: 10,
+    wink: 3,
+    next: LIGHTS.yellow,
+  },
+  yellow: {
+    duration: 5,
+    wink: 0,
+    next: LIGHTS.green,
+  },
+  green: {
+    duration: 10,
+    wink: 3,
+    next: LIGHTS.red,
+  },
 };

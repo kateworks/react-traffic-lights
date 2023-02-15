@@ -1,5 +1,5 @@
 import { useReducer, createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { LIGHTS, DURATIONS } from '../utils/const';
+import { LIGHTS, SCHEDULE } from '../utils/const';
 
 const { red, yellow, green } = LIGHTS;
 
@@ -11,53 +11,40 @@ export function useTrafficLights() {
 
 export function TrafficLightsProvider({ children }) {
   const [ state, dispatch ] = useReducer(trafficLightsReducer, initialState);
-  const [ value, setValue ] = useState(0);
+  const [ duration, setDuration ] = useState(0);
 
-  const setNextColor = useCallback((currentColor) => {
-    switch (currentColor) {
-      case LIGHTS.red:
-        dispatch({ type: LIGHTS.yellow });
-        setValue(DURATIONS[yellow][0] || 0);
-        break;
-      case LIGHTS.yellow:
-        dispatch({ type: LIGHTS.green });
-        setValue(DURATIONS[green][0] || 0);
-        break;
-      case LIGHTS.green:
-        dispatch({ type: LIGHTS.red });
-        setValue(DURATIONS[red][0] || 0);
-        break;
-      default:
+  const changeColor = useCallback((colorName) => {
+    if (colorName in LIGHTS) {
+      dispatch({ type: colorName });
+      setDuration(SCHEDULE[colorName].duration || 0);  
     }
   }, []);
 
-
   useEffect(() => {
     let id;
-    if (value > 0) {
+    if (duration > 0) {
       id = setTimeout(() => {
-        setValue((x) => (x - 1));
+        setDuration((x) => (x - 1));
       }, 1000);  
     }
 
-    if (value === 0) {
-      setNextColor(state.color);
+    if (duration === 0 && state.isOn && state.color in LIGHTS) {
+      changeColor(SCHEDULE[state.color].next || '');
     }
 
     return () => {
       if (id) clearTimeout(id);
     }
 // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [value]);
+}, [duration]);
 
   const start = useCallback(() => {
-    dispatch({ type: LIGHTS.red });
-    setValue(DURATIONS[red][0]);
-  }, []);
+    changeColor(red);
+  }, [changeColor]);
 
   const stop = useCallback(() => {
     dispatch({ type: 'clear'});
-    setValue(0);
+    setDuration(0);
   }, []);
 
   const toggle = () => dispatch({ type: 'toggle'});
@@ -66,7 +53,7 @@ export function TrafficLightsProvider({ children }) {
     isOn: state.isOn,
     color: state.color, 
     wink: state.wink,
-    counter: value,
+    counter: duration,
     toggle,
     start,
     stop,
@@ -82,7 +69,10 @@ export function TrafficLightsProvider({ children }) {
 function trafficLightsReducer(state, action) {
   switch (action.type) {
     case 'toggle':
-      return { ...state, isOn: !state.isOn };
+      return { 
+        ...state, 
+        isOn: !state.isOn 
+      };
     case 'clear':
       return { 
         ...state, 
@@ -90,22 +80,13 @@ function trafficLightsReducer(state, action) {
         wink: 0,
       };
     case red:
-      return { 
-        ...state, 
-        color: red,
-        wink: DURATIONS[red][1] || 0,
-      };
     case yellow:
-      return { 
-        ...state, 
-        color: yellow,
-        wink: DURATIONS[yellow][1] || 0,
-      };
     case green:
+      const colorName = action.type;
       return { 
         ...state, 
-        color: green,
-        wink: DURATIONS[green][1] || 0,
+        color: colorName,
+        wink: SCHEDULE[colorName].wink || 0,
       };
     default:
       throw new Error(`Unknown action: ${action}`);

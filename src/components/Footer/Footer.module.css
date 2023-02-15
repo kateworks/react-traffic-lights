@@ -12,8 +12,8 @@
   text-decoration: none;
   outline: none;
   color: var(--color-link);
-  transition: opacity 0.5s linear;
-  font-size: 1rem;
+  transition: opacity 0.3s linear;
+  font-size: 0.9rem;
   font-weight: 400;
 }
 
