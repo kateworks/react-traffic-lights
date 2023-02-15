@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useTrafficLights } from '../../store/TrafficLightsContext';
+import { LIGHTS } from '../../utils/const';
 import styles from './TrafficLights.module.css';
-import { LIGHTS, DURATIONS } from '../../utils/const';
 
 const { red, yellow, green } = LIGHTS;
 
@@ -11,30 +11,9 @@ const colorClasses = {
 };
 
 function TrafficColor({ color = '', isActive = false }) {
-  const [ duration, wink ] = DURATIONS[color] || [ 0, 0 ];
-  const [ count, setCount ] = useState(duration);
-
-  useEffect(() => {
-    let timerId;
-
-    if (count > 0) {
-      timerId = setTimeout(() => {
-        setCount((x) => (x - 1));
-      }, 1000);  
-    }
-
-    if (count === 0) {
-      
-    }
-
-    return () => {
-      if (timerId) clearTimeout(timerId);
-    }
-
-  }, [count]);
-
+  const lights = useTrafficLights();
   const colorClass = colorClasses[color] || '';
-  const blinkClass = (count > 0) && (count <= wink) && (isActive) ? 'blink' : '';
+  const blinkClass = (lights.counter > 0) && (lights.counter <= lights.wink) && (isActive) ? 'blink' : '';
 
   if (!isActive) {
     return <div className={styles.lights__color} />
@@ -42,7 +21,7 @@ function TrafficColor({ color = '', isActive = false }) {
 
   return (
     <div className={`${styles.lights__color} ${colorClass} ${blinkClass}`}>
-      <time className={styles.lights__time}>{count}</time>
+      <time className={styles.lights__time}>{lights.counter || ''}</time>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { RootLayout, HomePage, RedColorPage, YellowColorPage, GreenColorPage, ErrorPage } from '../pages';
 import { TrafficLightsProvider } from '../store/TrafficLightsContext';
+import { RootLayout, HomePage, RedColorPage, YellowColorPage, GreenColorPage, ErrorPage } from '../pages';
+import { LIGHTS } from '../utils/const';
 
 const router = createBrowserRouter([
   {
@@ -9,9 +10,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: 'red', element: <RedColorPage /> },
-      { path: 'yellow', element: <YellowColorPage /> },
-      { path: 'green', element: <GreenColorPage /> },
+      { path: LIGHTS.red, element: <RedColorPage /> },
+      { path: LIGHTS.yellow, element: <YellowColorPage /> },
+      { path: LIGHTS.green, element: <GreenColorPage /> },
     ]
   }
 ])
