@@ -1,16 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { Link, useRouteError } from 'react-router-dom';
+import useFocus from '../../utils/useFocus';
 import styles from './Error.module.css';
 
 function ErrorPage() {
   const error = useRouteError();
-  const linkRef = useRef(null);
-
-  useEffect(() => {
-    if (linkRef.current) {
-      linkRef.current.focus();
-    }
-  }, []);  
+  const linkRef = useFocus();
 
   return (
     <main className={styles.error}>

@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTrafficLights } from '../../store/TrafficLightsContext';
 import { NLink, ToggleSwitch } from '..';
+import useFocus from '../../utils/useFocus';
 import { navLinks } from '../../utils/const';
 import styles from './Header.module.css';
 
 function Header({ onToggle }) {
   const lights = useTrafficLights();
+  const toggleRef = useFocus();
 
   const navList = navLinks.map(({id, title, link, end}) => (
     <li key={id} className={styles.header__item}>
@@ -28,6 +30,7 @@ function Header({ onToggle }) {
         <ToggleSwitch 
           name='toggle-button' 
           label='Auto mode:'
+          ref={toggleRef}
           isChecked={lights.isOn}
           onChange={onToggle}
         />

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styles from './ToggleSwitch.module.css';
 
-function ToggleSwitch({ name, label, isChecked, onChange }) {
+const ToggleSwitch = forwardRef(function Toggle(props, ref) {
+  const { name, label, isChecked, onChange } = props;
   const toggleState = isChecked || false;
   const labelId = `labelFor-${name}`;
 
@@ -21,12 +22,13 @@ function ToggleSwitch({ name, label, isChecked, onChange }) {
           className={styles.toggle__input}
           checked={toggleState}
           onChange={onChange}
+          ref={ref}
         />
         <span className={styles.toggle__slider}/>
       </label>
     </div>  
   );
-}
+});
 
 ToggleSwitch.propTypes = {
   name: PropTypes.string.isRequired,
