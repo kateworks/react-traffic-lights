@@ -82,11 +82,12 @@ function trafficLightsReducer(state, action) {
     case red:
     case yellow:
     case green:
-      const colorName = action.type;
+      const color = action.type;
+      const wink = SCHEDULE[color].wink || 0;
       return { 
         ...state, 
-        color: colorName,
-        wink: SCHEDULE[colorName].wink || 0,
+        color,
+        wink,
       };
     default:
       throw new Error(`Unknown action: ${action}`);
