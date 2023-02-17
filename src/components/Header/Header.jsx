@@ -19,12 +19,13 @@ function Header({ onToggle }) {
       <h1 className={styles.header__title}>
         Traffic lights
       </h1>
-      <nav className={styles.header__nav}>
-        <ul className={styles.header__list}>
+      <nav className={styles.header__nav} aria-label='Traffic lights controls'>
+        <ul className={styles.header__list} aria-label='Change color manually'>
           {navList}
         </ul>
         <ToggleSwitch 
-          name="toggle-button" 
+          name='toggle-button' 
+          label='Auto mode:'
           isChecked={lights.isOn}
           onChange={onToggle}
         />

@@ -19,16 +19,19 @@ function TrafficColor({ color = '', isActive = false }) {
     return <div className={styles.lights__color} />
   }
 
+  const ariaTime = lights.counter ? `, ${lights.counter} seconds left` : '';
+  const ariaLabel = `${lights.color} color${ariaTime}`;
+
   return (
-    <div className={`${styles.lights__color} ${colorClass} ${blinkClass}`}>
-      <time className={styles.lights__time}>{lights.counter || ''}</time>
+    <div className={`${styles.lights__color} ${colorClass} ${blinkClass}`} aria-label={ariaLabel}>
+      <time className={styles.lights__time} aria-hidden>{lights.counter || ''}</time>
     </div>
   );
 }
 
 function TrafficLights({ activeColor = '' }) {
   return (
-    <div className={styles.lights}>
+    <div className={styles.lights} aria-label='Traffic lights'>
       <TrafficColor color={red} isActive={activeColor === red} />
       <TrafficColor color={yellow} isActive={activeColor === yellow} />
       <TrafficColor color={green} isActive={activeColor === green}/>
