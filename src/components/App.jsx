@@ -16,7 +16,10 @@ const router = createBrowserRouter([
       { path: LIGHTS.green, element: <GreenColorPage /> },
     ]
   }
-])
+], 
+{
+  basename: process.env.PUBLIC_URL,
+});
 
 function App() {
   return (
