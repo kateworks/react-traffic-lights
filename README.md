@@ -1,36 +1,49 @@
-# Тестовое задание "Светофор"
+# Traffic lights
 
-## Задание
+## Description
 
-Создать одностраничное приложение. 
-Реализовать логику переключения светофора: 10 секунд включён красный, 
-последние три секунды он должен мигать, то же самое для зелёного цвета. 
-Между красным и зелёным должен на 5 секунд включаться жёлтый (без мигания). 
-У каждого цвета должен быть свой роут.
-
-
-## Страница проекта
+This SPA implements traffic lights switching logic:
+red is on for 10 seconds, the last 3 seconds it flashes, the same for the green color. 
+Between red and green, yellow turns on for 5 seconds (without blinking).
+Each light has its own route.
 
 
-## Технологии
+## Project page
+
+https://kateworks.github.io/react-traffic-lights/
 
 
-## Запуск проекта
+## Built with
 
-1. Клонировать репозиторий
+Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-    `git clone https://github.com/kateworks/react-traffic-lights.git`
 
-2. Установить зависимости
+## Installation
 
-    `cd react-traffic-lights`
+### Get the copy
+
+`git clone https://github.com/kateworks/react-traffic-lights.git`
+
+### Install dependencies
+
+`cd react-traffic-lights`
     
-    `npm install`
+`npm install`
 
------------------------------------------------------------------------------
 
-3) timer
-4) translate
-5) доступность
-6) error page
-7) TrafficLights - убрать лишний код
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
