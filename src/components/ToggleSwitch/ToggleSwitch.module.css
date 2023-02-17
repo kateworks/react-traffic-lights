@@ -38,7 +38,7 @@
   transition: opacity 0.5s linear;
 }
 
-.toggle__slider:before {
+.toggle__slider::before {
   position: absolute;
   content: '';
   height: 20px;
@@ -50,22 +50,22 @@
   transition: 0.3s linear;
 }
 
+.toggle__slider:hover {
+  cursor: pointer;
+  opacity: var(--opacity-on-hover);
+}
+
 .toggle__input:checked + .toggle__slider {
   background-color: var(--color-frame);
 }
 
-.toggle__input:checked + .toggle__slider:before {
+.toggle__input:checked + .toggle__slider::before {
   transform: translateX(100%);
 }
 
 .toggle__input:focus-visible + .toggle__slider {
   outline: var(--outline-focus);
   outline-offset: var(--outline-offset);
-}
-
-.toggle__slider:hover {
-  cursor: pointer;
-  opacity: var(--opacity-on-hover);
 }
 
 @supports not selector(:focus-visible) {

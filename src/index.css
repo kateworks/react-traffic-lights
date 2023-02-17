@@ -8,10 +8,11 @@
 
 :root {
   font-size: 112.5%;
+
   --color-white: #e4e4e4;
-  --color-red: hsl(0, 90%, 55%);
-  --color-yellow: hsl(60, 89%, 42%);
-  --color-green: hsl(140, 85%, 35%);
+  --color-red: hsl(0deg 90% 55%);
+  --color-yellow: hsl(60deg 89% 42%);
+  --color-green: hsl(140deg 85% 35%);
   --color-main-bg: #242424;
   --color-text: var(--color-white);
   --color-link: var(--color-white);
@@ -25,14 +26,13 @@
 body {
   color: var(--color-text);
   background-color: var(--color-main-bg);
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
   line-height: 1;
   font-weight: normal;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;  
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 ul {
