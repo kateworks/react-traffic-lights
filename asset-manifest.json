@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-traffic-lights/static/css/main.c2315a2a.css",
+    "main.js": "/react-traffic-lights/static/js/main.cb5c916b.js",
+    "index.html": "/react-traffic-lights/index.html",
+    "main.c2315a2a.css.map": "/react-traffic-lights/static/css/main.c2315a2a.css.map",
+    "main.cb5c916b.js.map": "/react-traffic-lights/static/js/main.cb5c916b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c2315a2a.css",
+    "static/js/main.cb5c916b.js"
+  ]
+}
