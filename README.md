@@ -10,7 +10,7 @@ Each light has its own route.
 
 ## Project page
 
-https://kateworks.github.io/react-traffic-lights/
+https://kateworks.github.io/react-traffic-lights
 
 
 ## Built with
@@ -47,3 +47,13 @@ You will also see any lint errors in the console.
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
+
+### `npm run lint:js`
+
+Run eslint on all the JS and JSX files in the project.
+
+### `npm run lint:css`
+
+Run stylelint on all the CSS files in the project.
+
+
