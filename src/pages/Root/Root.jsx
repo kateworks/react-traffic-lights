@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useTrafficLights } from '../../store/TrafficLightsContext';
 import { Header, Footer } from '../../components';
@@ -12,7 +12,6 @@ function RootLayout() {
     if (lights.isOn) {
       navigate(lights.color);
     } 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lights.color]);
 
   useEffect(() => {    
@@ -22,7 +21,6 @@ function RootLayout() {
       navigate('/');
       lights.stop();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lights.isOn]);
 
   const handleToggle = () => {

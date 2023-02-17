@@ -1,3 +1,4 @@
+import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { TrafficLightsProvider } from '../store/TrafficLightsContext';
 import { RootLayout, HomePage, RedColorPage, YellowColorPage, GreenColorPage, ErrorPage } from '../pages';

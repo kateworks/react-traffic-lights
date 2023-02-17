@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { useTrafficLights } from '../../store/TrafficLightsContext';
 import { LIGHTS } from '../../utils/const';
 import styles from './TrafficLights.module.css';
@@ -10,7 +12,7 @@ const colorClasses = {
   green: styles.lights__color_green,
 };
 
-function TrafficColor({ color = '', isActive = false }) {
+function TrafficColor({ color, isActive }) {
   const lights = useTrafficLights();
   const colorClass = colorClasses[color] || '';
   const blinkClass = (lights.counter > 0) && (lights.counter <= lights.wink) && (isActive) ? 'blink' : '';
@@ -29,7 +31,7 @@ function TrafficColor({ color = '', isActive = false }) {
   );
 }
 
-function TrafficLights({ activeColor = '' }) {
+function TrafficLights({ activeColor }) {
   return (
     <div className={styles.lights} aria-label='Traffic lights'>
       <TrafficColor color={red} isActive={activeColor === red} />
@@ -38,5 +40,18 @@ function TrafficLights({ activeColor = '' }) {
     </div>
   );
 }
+
+TrafficColor.propTypes = {
+  color: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+};
+
+TrafficLights.propTypes = {
+  activeColor: PropTypes.string,
+};
+
+TrafficLights.defaultProps = {
+  activeColor: '',
+};
 
 export default TrafficLights;

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link, useRouteError } from 'react-router-dom';
 import styles from './Error.module.css';
 

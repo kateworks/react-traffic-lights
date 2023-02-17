@@ -1,4 +1,5 @@
-import { useReducer, createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { useReducer, createContext, useContext, useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { LIGHTS, SCHEDULE } from '../utils/const';
 
 const { red, yellow, green } = LIGHTS;
@@ -35,7 +36,6 @@ export function TrafficLightsProvider({ children }) {
     return () => {
       if (id) clearTimeout(id);
     }
-// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [duration]);
 
   const start = useCallback(() => {
@@ -66,6 +66,10 @@ export function TrafficLightsProvider({ children }) {
   );
 }
 
+TrafficLightsProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 function trafficLightsReducer(state, action) {
   switch (action.type) {
     case 'toggle':
@@ -82,12 +86,10 @@ function trafficLightsReducer(state, action) {
     case red:
     case yellow:
     case green:
-      const color = action.type;
-      const wink = SCHEDULE[color].wink || 0;
       return { 
         ...state, 
-        color,
-        wink,
+        color: action.type,
+        wink: SCHEDULE[action.type].wink || 0,
       };
     default:
       throw new Error(`Unknown action: ${action}`);

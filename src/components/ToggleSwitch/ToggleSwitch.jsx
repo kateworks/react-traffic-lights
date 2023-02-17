@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './ToggleSwitch.module.css';
 
 function ToggleSwitch({ name, label, isChecked, onChange }) {
@@ -11,7 +13,7 @@ function ToggleSwitch({ name, label, isChecked, onChange }) {
       </label>
       <label className={styles.toggle__switch}>
         <input
-          type="checkbox"
+          type='checkbox'
           name={name}
           aria-labelledby={labelId}
           aria-checked={toggleState}
@@ -24,6 +26,13 @@ function ToggleSwitch({ name, label, isChecked, onChange }) {
       </label>
     </div>  
   );
+}
+
+ToggleSwitch.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  isChecked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 export default ToggleSwitch;

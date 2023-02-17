@@ -1,3 +1,4 @@
+import React from 'react';
 import { TrafficLights } from '../components';
 
 function HomePage() {

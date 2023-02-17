@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Footer.module.css';
 
 function Footer() {
@@ -5,9 +6,9 @@ function Footer() {
     <footer className={styles.footer}>
       <a 
         className={styles.footer__link} 
-        href="mailto:kateworks2023@gmail.com" 
-        target="_blank" 
-        rel="noopener noreferrer"
+        href='mailto:kateworks2023@gmail.com' 
+        target='_blank' 
+        rel='noopener noreferrer'
       >
         &#169; 2023. Ekaterina Pozhidaeva
       </a>      

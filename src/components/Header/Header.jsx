@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { useTrafficLights } from '../../store/TrafficLightsContext';
 import { NLink, ToggleSwitch } from '..';
 import { navLinks } from '../../utils/const';
@@ -33,5 +35,9 @@ function Header({ onToggle }) {
     </header>
   );
 }
+
+Header.propTypes = {
+  onToggle: PropTypes.func.isRequired,
+};
 
 export default Header;

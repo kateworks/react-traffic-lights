@@ -1,5 +1,6 @@
-import { TrafficLights  } from "../components";
-import { LIGHTS } from "../utils/const";
+import React from 'react';
+import { TrafficLights  } from '../components';
+import { LIGHTS } from '../utils/const';
 
 function YellowColorPage() {
   return (
